@@ -28,4 +28,6 @@ chmod 700 get_helm.sh
 
 helm repo add eks https://aws.github.io/eks-charts
 
+helm install aws-load-balancer-controller eks/aws-load-balancer-controller -n kube-system --set clusterName=sampleapp --set serviceAccount.create=false --set serviceAccount.name=aws-load-balancer-controller
+
 kubectl get pods -n kube-system
