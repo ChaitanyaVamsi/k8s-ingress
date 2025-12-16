@@ -14,12 +14,12 @@ aws iam create-policy \
  --policy-document file://iam-policy.json
 
 eksctl create iamserviceaccount \
---cluster=sampleapp \
+--cluster=<cluster-name> \
 --namespace=kube-system \
 --name=aws-load-balancer-controller \
---attach-policy-arn=arn:aws:iam::471112667143:policy/AWSLoadBalancerControllerIAMPolicy \
+--attach-policy-arn=arn:aws:iam::<AWS_ACCOUNT_ID>:policy/AWSLoadBalancerControllerIAMPolicy \
 --override-existing-serviceaccounts \
---region us-east-1 \
+--region <region-code> \
 --approve
 
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-4
