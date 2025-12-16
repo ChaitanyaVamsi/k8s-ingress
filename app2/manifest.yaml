@@ -37,3 +37,26 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: minimal-ingress
+  annotations:
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:471112667143:certificate/5219b99b-8415-40f5-a447-d452b111f4fe
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/tags: Environment=dev,Project=roboshop
+spec:
+  ingressClassName: alb
+  rules:
+    - host: "app1.cloudops.store"
+      http:
+        paths:
+        - path: /testpath
+          pathType: Prefix
+          backend:
+            service:
+              name: app2-sv
+              port:
+                number: 80
