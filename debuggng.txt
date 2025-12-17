@@ -1,2 +1,5 @@
 kubectl get ingress
 kubectl describe ingress minimal-ingress
+
+
+kubectl rollout restart deployment app2-deployment
