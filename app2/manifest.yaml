@@ -59,6 +59,6 @@ spec:
           pathType: Prefix
           backend:
             service:
-              name: app2-sv
+              name: app2-svc
               port:
                 number: 80
