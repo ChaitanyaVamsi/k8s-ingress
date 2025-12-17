@@ -52,7 +52,7 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-    - host: "app1.cloudops.store"
+    - host: "app2.cloudops.store"
       http:
         paths:
         - path: /testpath
